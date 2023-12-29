@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PeopleResource;
 use App\Models\People;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class PeopleController extends Controller
     public function index()
     {
         return People::all();
+        //return PeopleResource::collection(People::all());
     }
 
     /**
@@ -28,7 +30,7 @@ class PeopleController extends Controller
      */
     public function show(People $people)
     {
-        //
+        return new PeopleResource($people);
     }
 
     /**
